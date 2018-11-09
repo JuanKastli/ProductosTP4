@@ -28,22 +28,10 @@
 
     Private Sub Filtrar_Click(sender As Object, e As EventArgs) Handles Filtrar.Click
         'Obtiene el Id seleccionando en el Combobox1.
-        Dim IdArticulo As Integer = CInt(ArticuloCombo.ComboBox.SelectedValue)
-
-        'No pude aplicar filtro al bindingsource asi que lo recargue filtrado de mesas_list.
-        'RubroCollectionBindingSource.DataSource = RubroList.TraerRubro(IdRubro)
+        Dim IdRubro As Integer = CInt(ArticuloCombo.ComboBox.SelectedValue)
 
         'Quita la seleccion del contenido del Combobox
         ArticuloCombo.SelectionLength = 0
-
-        'Colorea las filas desmarcadas o sea dia no habil.
-        For Each fila As DataGridViewRow In DataGridView1.Rows
-            If CBool(fila.Cells(3).Value) Then
-                fila.DefaultCellStyle.BackColor = Color.White
-            Else
-                fila.DefaultCellStyle.BackColor = Color.Red
-            End If
-        Next
 
         'Si la cantidad de filas es mayor a cero, entonces selecciono la primer fila.
         If DataGridView1.Rows.Count > 0 Then

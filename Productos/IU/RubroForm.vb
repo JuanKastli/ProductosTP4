@@ -36,12 +36,12 @@
             Case "Agregar"
                 RubroList.InsertarRubro(MiRubro)
 
-            Case "Modificar"
-                RubroList.ActualizarRubro(MiRubro)
-                RubrosGrid.DataGridView1.Refresh()
             Case "Eliminar"
                 RubroList.EliminarRubro(MiRubro)
 
+            Case "Modificar"
+                RubroList.ActualizarRubro(MiRubro)
+                RubrosGrid.DataGridView1.Refresh()
         End Select
 
         Me.Close()

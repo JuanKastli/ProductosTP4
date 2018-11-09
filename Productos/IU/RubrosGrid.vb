@@ -28,16 +28,14 @@
 
     End Sub
 
-    Private Sub llenarform()
+    Private Sub llenarRubroform()
 
         'Número de fila seleccionado en el datagridview
         Dim fila As Integer = DataGridView1.CurrentRow.Index
 
-        'funcion que llena la grilla con los datos de base de datos
         RubroForm.IdText.Text = RubroList.Item(fila).Id
         RubroForm.DescripcionText.Text = RubroList.Item(fila).Descripcion
-        'Olvidamos presevar IdTurno para poder modificar, ya que es un dato de la tabla
-        ' RubroForm.IdRubro = RubroList.Item(fila).IdRubro
+
 
     End Sub
 
@@ -50,11 +48,11 @@
         End If
 
         'boton modificar
-        RubroForm.operacion = "modifica"
-        RubroForm.Text = "modificar rubro"
+        RubroForm.operacion = "Modificar"
+        RubroForm.Text = "Modificar rubro"
         RubroForm.indice = DataGridView1.CurrentRow.Index
 
-        llenarform()
+        llenarRubroform()
         RubroForm.Show()
 
         Dim fila As Integer = DataGridView1.CurrentRow.Index
@@ -62,13 +60,6 @@
         'Selecciono nuevamente la fila para que refresque el contenido, sino no muestra la modificación.
         DataGridView1.Rows.Item(fila).Selected = False
         DataGridView1.Rows.Item(fila).Selected = True
-
-        'Coloreamos la fila de nuevo despues de modificar.
-        If RubroList.Item(fila).Descripcion Then
-            DataGridView1.Rows.Item(fila).DefaultCellStyle.BackColor = Color.Red
-        Else
-            DataGridView1.Rows.Item(fila).DefaultCellStyle.BackColor = Color.White
-        End If
 
     End Sub
 
@@ -91,11 +82,8 @@
         RubroForm.indice = DataGridView1.CurrentRow.Index
         'RubroForm.TituloLable1.text = "Eliminar Rubro"
 
-        llenarform()
+        llenarRubroform()
         RubroForm.Show()
     End Sub
 
-    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
-
-    End Sub
 End Class
